@@ -1,3 +1,5 @@
+// 0.4 통합개발환경의 기본적인 사용법
+
 #include <iostream>
 
 int	main(void)
@@ -9,5 +11,5 @@ int	main(void)
 
 
 	std::cout << string << std::endl;
-	return 0;
+	return (0);
 }

@@ -3,3 +3,6 @@ a.out
 
 # object files
 *.o
+
+# vscode setting files
+**/.vscode/
