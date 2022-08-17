@@ -1,8 +1,11 @@
 # execution files
-a.out
+/**/a.out
 
 # object files
-*.o
+/**/*.o
 
 # vscode setting files
-**/.vscode/
+/**/.vscode/
+
+# debugging files
+/**/*.dSYM/
