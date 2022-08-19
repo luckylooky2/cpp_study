@@ -8,7 +8,7 @@ int main(void)
 	// 1. int x = 2;
 	// 2. /* x = 5; */
 	// /*를 아무리 많이 달아도 */로 주석이 닫힘
-	int y = x + 3;
+	int y = 3;
 
 	std::cout << 1 + 2 << std::endl;
 

@@ -7,7 +7,7 @@
 int main()
 {
 	// 함수 블록 안에서 std::를 생략할 수 있음
-	// 컴파일러가 PATH를 찾아주듯이 namespace를 자동으로 찾아줌
+	// 명령어 PATH를 찾아주듯이 컴파일러가 namespace를 자동으로 찾아줌
 	using namespace std;
 
 	int	x = 1024;
@@ -22,11 +22,11 @@ int main()
 	// stream을 따라서 cout으로 들어간다고 생각하자?
 	std::cout << "I love this lecture!" << std::endl;
 	std::cout << "I love this lecture!\n";
-	std::cout << "x is " << x << std::endl; // x is 1024
-	std::cout << "y is " << y << std::endl; // y is -2147483647
-	std::cout << "z is " << z << std::endl; // z is 2
+	std::cout << "x is " << x << std::endl; 	// x is 1024
+	std::cout << "y is " << y << std::endl;		// y is -2147483647
+	std::cout << "z is " << z << std::endl; 	// z is 2
 	// 소수점이 잘리는 이유?
-	std::cout << "pi is " << pi << std::endl; // pi is 3.14159
+	std::cout << "pi is " << pi << std::endl; 	// pi is 3.14159
 
 	std::cout << "abc" << "\t" << "def" << std::endl;
 	std::cout << "ab" << "\t" << "cdef" << std::endl;
@@ -44,7 +44,7 @@ int main()
 	std::cin >> str;
 	std::cout << str << std::endl;
 
-	// cin, cout은 스트림의 일부애 불과
+	// cin, cout은 스트림의 일부에 불과
 	// C언어에서 printf, scanf와의 차이점?
 	// 나중에 operator overloading을 배운 후에는 file I/O, network에도 다시 사용할 수 있음
 

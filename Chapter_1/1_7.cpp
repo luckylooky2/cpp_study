@@ -10,25 +10,25 @@ int test()
 	// error: redefinition of 'x'
 	// int x = 1;
 
-	std::cout << x << "  " << &x << std::endl; // 0x7ffeed42fa38
+	std::cout << x << "  " << &x << std::endl; 		// 0x7ffeed42fa38
 
 	// if, function 등과 같이 쓰이지 않을 수 있음
 	{
 		int	x = 1;
 
-		std::cout << x << "  " << &x << std::endl; // 0x7ffeed42fa34
+		std::cout << x << "  " << &x << std::endl; 	// 0x7ffeed42fa34
 	}
 
 	{
 		// int	x = 2;
 
 		// Javascript에서의 스코프 체인과 비슷?
-		std::cout << x << "  " << &x << std::endl; // 0x7ffeed42fa38
+		std::cout << x << "  " << &x << std::endl; 	// 0x7ffeed42fa38
 	}
 
 	{
 		x = 3;
-		std::cout << x << "  " << &x << std::endl; // 0x7ffeed42fa38
+		std::cout << x << "  " << &x << std::endl; 	// 0x7ffeed42fa38
 	}
 
 	return (0);

@@ -22,10 +22,10 @@
 
 int	total;
 int	_orange;
-int VALUE; // 사용하지 말 것
-int	my variable  name; // 사용할 수 없음
-int TotalCustomers; // 사용하지 말 것
-int void; // 사용할 수 없음
+int VALUE; 				// 사용하지 말 것
+int	my variable  name; 	// 사용할 수 없음
+int TotalCustomers; 	// 사용하지 말 것
+int void; 				// 사용할 수 없음
 int numFruit;
-int 2some; // 사용할 수 없음
+int 2some; 				// 사용할 수 없음
 int meters_of_pipe;
