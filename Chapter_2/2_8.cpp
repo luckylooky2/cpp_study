@@ -28,6 +28,7 @@ int main()
 
 	// C++ 14 : binary literal
 	int	b = 0b1010'1111'0001'0010;
+	
 	std::cout << b << std::endl;	// 44818
 
 	// C++에서는 C에서와 달리 매크로(#define)를 거의 사용하지 않음

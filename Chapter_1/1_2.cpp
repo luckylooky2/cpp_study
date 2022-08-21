@@ -1,4 +1,4 @@
-// 1.2 주석 comments
+// 1.2 주석 (comments)
 
 #include <iostream>
 
