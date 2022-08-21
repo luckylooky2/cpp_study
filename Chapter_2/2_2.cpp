@@ -5,8 +5,10 @@
 
 int main()
 {
-	short			s = 1; // 2 bytes = 2 * 8 bits = 16 bits (max : 2^(16-1) - 1)
-	int				i = 1; // 00000000 00000000 00000000 00000001, signed int : 처음 1 bit는 부호에 사용
+	// 2 bytes = 2 * 8 bits = 16 bits (max : 2^(16-1) - 1)
+	short			s = 1;
+	// 00000000 00000000 00000000 00000001, signed int : 처음 1 bit는 부호에 사용 
+	int				i = 1;
 	long			l = 1;
 	long long		ll = 1;
 	unsigned int	ui;

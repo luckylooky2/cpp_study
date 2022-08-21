@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-// 함수에서도 많이 쓰임
+// const 키워드는 함수에서도 많이 쓰임
 // 파라미터를 함수 내에서 바꾸는 것은 지양
 void	printNumber(const int my_number)
 {
@@ -23,7 +23,7 @@ int	main()
 
 	// const 키워드를 붙인 변수의 값을 변경할 수 없음
 	// 다른 사람이 변경하지 못하도록 막거나, 실수로 바꾸는 것을 방지
-	// gravity = 1.2;
+	gravity = 1.2;
 
 	printNumber(123);
 

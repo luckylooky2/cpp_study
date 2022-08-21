@@ -21,9 +21,6 @@ int test()
 
 	// 왜 char 자료형의 주소는 출력할 수 없는가?
 	// https://bigpel66.oopy.io/library/cpp/etc/5
-	// ostream 이용 시에 C++은 char *를 string으로 인식하게 되는데 C++의 string 특성 상 문자열의 끝을 알리는 '\0'가 들어오지 않는 문자열이 끝이 났다고 인식하지 않는다. 
-	// 따라서 주소가 출력되지 않고 빈 칸으로 출력된다. (C++에서 string은 '\0'이라고 하는 NULL이 들어오면 끝으로 인식하는 Zero-Terminated 구조이다.)
-	std::cout << &a << std::endl; 			// H{
 	std::cout << &b << std::endl; 			// 0x16d3cf5e0
 	std::cout << (int *)&a << std::endl; 	// 0x16d3cf5ef
 	std::cout << &i << std::endl; 			// 0x16d3cf5f4
@@ -32,24 +29,27 @@ int test()
 }
 
 // 1. character type
-// 하나의 자료형이라도 char / char16_t(더 다양한 문자를 위해 바이트 추가) / char32_t / wchar_t(windows, linux 호환-데이터를 저장하는 방식이 다름) 등 다양하게 표현
+// char 
+// char16_t(더 다양한 문자를 위해 바이트 추가) 
+// char32_t / wchar_t(windows, linux 호환-데이터를 저장하는 방식이 다름) 등
+// 다양하게 표현
 
-// 문자열
+// cf> 문자열
 // string을 이용해서 저장 : standard library
 // fundamental type은 아님. 하지만 많이 사용
 
 // 2. integer type
 // signed : 음, 0, 양 / unsigned : 0, 양
 // 두 자료형이 저장되는 방식이 다름 => 특정 연산할 때, unsigned가 더 빠른 경향이 있음
-// 필요한 범위에 따라 : char(최소 1 byte) / short(2) / int(2) / long(4) / long long(8)
+// 필요한 범위에 따라 : char(최소 1) / short(2) / int(2) / long(4) / long long(8)
 // 할당 바이트를 최소 조건으로 규정 => 컴파일러에 따라 다를 수 있음
-// 무조건 long long을 쓰면 되는 것 아닌가? (long long * 사용자 수)가 되기 때문에 가급적 메모리를 적게 쓰는게 좋음
+// 무조건 long long을 쓰면 되는 것 아닌가?
+// (long long * 사용자 수)가 되기 때문에 가급적 메모리를 적게 쓰는게 좋음
 
 // 3. floating-point type
 // 지수부와 실수부로 나눔
 // 필요한 범위에 따라 : float / double / long double
 // 수학적으로 정확하게 계산하지 못함, 오차가 발생할 가능성이 존재
-// 정밀한 
 
 // 4. boolean type
 // bool 
@@ -106,7 +106,8 @@ int main()
 	// 같은 자료형끼리만 다중 선언, 모든 변수에 대해서 초기화를 진행할 것
 	int x, y, z;
 	// 예전 컴파일러는 변수를 가장 위에서 선언해야 했음
-	// 요즘엔 사용할 변수는 사용하기 직전에 선언하는 것을 선호 => 디버깅하기 편함, 리팩토링(객체화, 클래스화)하기 편함
+	// 요즘엔 사용할 변수는 사용하기 직전에 선언하는 것을 선호
+	// => 디버깅하기 편함, 리팩토링(객체화, 클래스화)하기 편함
 
 	return (0);
 }
