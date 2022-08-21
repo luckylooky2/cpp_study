@@ -1,44 +1,51 @@
-// 1.13 전처리기(preprocessor)와의 첫 만남
+// 1.13 네임스페이스(명칭 공간)
 
+// namespace std?
+// _LIBCPP_BEGIN_NAMESPACE_STD 매크로를 통해서 namespace를 정의
 #include <iostream>
-#include <algorithm>
 
-// 코드에서 "MY_NUMBER"을 만나면 9로 치환
-#define MY_NUMBER 9
+namespace MyFunction1
+{
+	// namespace 중첩
+	namespace InnerSpace
+	{
+		int	doSomething(int a, int b)
+		{
+			return (a + b);
+		}
+	}
+} // namespace name
 
-// 문자열도 가능
-#define MY_WORD	 "Hello World"
+// 완전히 이름이 같은 두 함수 => 컴파일 오류 : redefinition
+// 해결?
+// 1. 함수 이름을 바꾸는 방법
+// 2. 함수 이름을 유지하는 방법 : namespace로 감싸는 방법
 
-// 함수도 가능
-// 1. 단, 앞 뒤로 괄호를 추가하는 것을 잊지 말 것
-// why? 매크로가 치환될 때 괄호가 없으면 문제가 생길 가능성이 있기 때문
-
-// 2. 최소 단위를 괄호로 묶을 것
-// why? 이항/삼항 연산자를 사용할 경우, 계산에 오류가 발생할 가능성 차단
-#define MAX(a, b) ( ( a > b ) ? (a) : (b) )
-
-// if문과 같은 효과를 전처리 단계에서 처리
-// OS, 그래픽카드 사양 등을 구별할 때 많이 사용
-#define MAC_OS
-
-// define의 스코프는 현재 파일에 한정
-#define WINDOWS
-void	printIfWindows();
+namespace MyFunction2
+{
+	int	doSomething(int a, int b)
+	{
+		return (a * b);
+	}
+} // namespace name
 
 int	main()
 {
-	std::cout << MY_NUMBER << std::endl;
-	std::cout << MY_WORD << std::endl;
-	std::cout << MAX(2 + 3, 2) << std::endl;
-	// 역시 namespace std MACRO : _LIBCPP_BEGIN_NAMESPACE_STD
-	std::cout << std::max(2 + 3, 2) << std::endl;
-#ifdef MAC_OS
-	std::cout << "MacOS " << std::endl;
-#endif
-#ifndef MAC_OS
-	std::cout << "Windows " << std::endl;
-#endif
-	printIfWindows();
+
+	// namespace 안에 똑같은 이름의 함수가 있다면
+	// 	std::cout << doSomething(3, 4) << std::endl;
+	// error: call to 'doSomething' is ambiguous
+
+	// using namespace는 되도록 사용할 스코프 안에서 선언
+	// 전역에서 선언한다면 오류를 초래할 수 있음
+	using namespace MyFunction1::InnerSpace;
+	using namespace MyFunction2;
+
+	std::cout << "Hello, World" << std::endl;
+	// 두 namespace 생성 후 실행
+	// error: use of undeclared identifier 'doSomething'
+	// namespace::function()으로 접근
+	std::cout << MyFunction1::InnerSpace::doSomething(3, 4) << std::endl;
 
 	return (0);
 }

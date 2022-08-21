@@ -1,32 +1,26 @@
-// 1.11 헤더 가드가 필요한 이유
+// 1.11 헤더파일 만들기
 
 #include <iostream>
 
-// 링킹 에러
-// Undefined symbols for architecture x86_64:
-//   "add(int, int)", referenced from:
-//       _main in 1_11-083962.o
-// ld: symbol(s) not found for architecture x86_64
-// clang: error: linker command failed with exit code 1 (use -v to see invocation)
+// 방법 1
+// 필요할 때마다 prototype을 Declare
+// int	add(int a, int b);
+// 단점 : 일일이 필요할 때마다 Declaration하는 것은 불편함
 
-// 이유 ? Declaration과 Definition이 분리했기 때문
-// 컴파일할 때 소스 파일을 같이 컴파일하지 않은 경우
-// 프로토타입은 헤더파일에 선언이 되어 있음
-// 프로토타입만 발견하면 다음 단계로 넘어감(오브젝트 파일을 생성?)
-// 링킹 과정에서 몸체를 참조해야 하는데 없기 때문에 링킹 에러 발생
+// 방법 2
+// 헤더파일 : Declaration을 일괄적으로 모아놓은 파일
+// #include "1_11.hpp"
+// 헤더파일이 많아짐에 따라 코딩을 하면서 폴더로 헤더파일을 묶고 정리하는 습관을 들어야 함
 
-// 헤더 가드가 필요한 이유
-// error: redefinition of 'add'
-// 불필요하게 include가 2번 발생한 경우 redefinition 에러 발생
-// 헤더 가드 : 중복될 경우 한 번만 include 헤라
+// 객체 지향 프로그래밍을 하게 되면 클래스를 정의하게 되는데
+// 클래스를 main 파일에 정의하지 않고
+// 대부분 헤더파일/cpp 파일에 정의하고 #include 함
 
-#include "1_11_doSomething.hpp"
-// 불필요한 include
-#include "1_11_add.hpp"
+#include "1_11.hpp"
 
 int main()
 {
-	std::cout << doSomething() << std::endl;
+	std::cout << add(1, 2) << std::endl;
 
 	return (0);
 }

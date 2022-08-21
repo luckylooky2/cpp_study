@@ -1,25 +1,40 @@
-// 1.10 헤더파일 만들기
+// 1.10 선언과 정의의 분리
 
 #include <iostream>
 
-// 방법 1
-// Declaration하고 같이 컴파일
-// 일일이 필요할 때마다 Declaration하는 것은 불편함
-// int	add(int a, int b);
+// 선언(Declaration) : 전방 선언(Forward Declaration)
+// 함수에 대해 알기 위한 최소 조건 : 입력이 어떤 것이고, 출력이 어떤 것이다.
+// 프로토타입을 위에 선언
 
-// 방법 2
-// 헤더파일 : Declaration을 일괄적으로 모아놓은 파일
-// 헤더파일이 많아짐에 따라
-// 코딩을 하면서 폴더로 헤더파일을 묶고 정리하는 습관을 들어야 함
+int add(int a, int b);
+int	multiply(int a, int b);
+int	subtract(int a, int b);
 
-// 객체 지향 프로그래밍을 하게 되면 클래스를 정의하게 되는데
-// 클래스를 처음에 main 파일에 정의하지 않고
-// 대부분 헤더파일/cpp 파일에 정의하고 #include 함
-#include "1_10.hpp"
+// main 함수가 전방 선언 없이 제일 위에 정의될 경우
+// error: use of undeclared identifier 'add'
 
 int main()
 {
 	std::cout << add(1, 2) << std::endl;
+	std::cout << multiply(1, 2) << std::endl;
+	std::cout << subtract(1, 2) << std::endl;
 
 	return (0);
+}
+
+// 정의(Definition)
+
+int add(int a, int b)
+{
+	return (a + b);
+}
+
+int	multiply(int a, int b)
+{
+	return (a * b);
+}
+
+int	subtract(int a, int b)
+{
+	return (a - b);
 }

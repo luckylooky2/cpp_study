@@ -1,54 +1,32 @@
-// 1.12 네임스페이스(명칭 공간)
+// 1.12 헤더 가드가 필요한 이유
 
-// namespace std?
-// _LIBCPP_BEGIN_NAMESPACE_STD 매크로를 통해서 namespace를 정의
 #include <iostream>
 
-namespace MyFunction1
+// 링킹 에러
+// Undefined symbols for architecture x86_64:
+//   "add(int, int)", referenced from:
+//       _main in 1_11-083962.o
+// ld: symbol(s) not found for architecture x86_64
+// clang: error: linker command failed with exit code 1 (use -v to see invocation)
+
+// 이유 ? Declaration과 Definition이 분리했기 때문
+// 컴파일할 때 소스 파일을 같이 컴파일하지 않은 경우
+// 프로토타입은 헤더파일에 선언이 되어 있음
+// 프로토타입만 발견하면 다음 단계로 넘어감(오브젝트 파일을 생성?)
+// 링킹 과정에서 몸체를 참조해야 하는데 없기 때문에 링킹 에러 발생
+
+// 헤더 가드가 필요한 이유
+// error: redefinition of 'add'
+// 불필요하게 include가 2번 발생한 경우 redefinition 에러 발생
+// 헤더 가드 : 중복될 경우 한 번만 include 헤라
+
+#include "1_12_doSomething.hpp"
+// 불필요한 include
+#include "1_12_add.hpp"
+
+int main()
 {
-	// namespace 중첩
-	namespace InnerSpace
-	{
-		int	doSomething(int a, int b)
-		{
-			return (a + b);
-		}
-	}
-} // namespace name
-
-// 완전히 이름이 같은 두 함수 => 컴파일 오류 : redefinition
-// 해결?
-// 1. 함수 이름을 바꾸는 방법
-// 2. 함수 이름을 유지하는 방법 : namespace로 감싸는 방법
-
-// 같은 namespace로 생성
-// error: redefinition of 'doSomething'
-namespace MyFunction2
-{
-	int	doSomething(int a, int b)
-	{
-		return (a * b);
-	}
-} // namespace name
-
-
-int	main()
-{
-
-	// namespace 안에 똑같은 이름의 함수가 있다면
-	// 	std::cout << doSomething(3, 4) << std::endl;
-	// error: call to 'doSomething' is ambiguous
-
-	// using namespace는 되도록 사용할 스코프 안에서 선언
-	// 전역에서 선언한다면 오류를 초래할 수 있음
-	using namespace MyFunction1::InnerSpace;
-	using namespace MyFunction2;
-
-	std::cout << "Hello, World" << std::endl;
-	// 두 namespace 생성 후 실행
-	// error: use of undeclared identifier 'doSomething'
-	// namespace::function()으로 접근
-	std::cout << MyFunction1::InnerSpace::doSomething(3, 4) << std::endl;
+	std::cout << doSomething() << std::endl;
 
 	return (0);
 }
