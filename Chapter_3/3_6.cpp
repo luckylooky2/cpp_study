@@ -61,20 +61,20 @@ int main()
 	!x && !y;
 
 	// 연습 문제
-	(true && true) || false;
-	(false && true) || true;
-	(false && true) || false || true;
-	(14 > 13 || 2 > 1) && (9 > 1);
-	!(2314123 > 2 || 123123 > 2387);
+	(true && true) || false;			// true
+	(false && true) || true;			// true 
+	(false && true) || false || true;	// true
+	(14 > 13 || 2 > 1) && (9 > 1);		// true
+	!(2314123 > 2 || 123123 > 2387);	// false
 
 	// &&가 ||보다 우선순위가 높음
 	bool	v1 = true;
 	bool	v2 = false;
 	bool	v3 = false;
 
-	std::cout << v1 || v2 && v3 << std::endl;
-	std::cout << v1 || (v2 && v3) << std::endl;
-	std::cout << (v1 || v2) && v3 << std::endl;
+	std::cout << (v1 || v2 && v3) << std::endl;		// true
+	std::cout << (v1 || (v2 && v3)) << std::endl;	// true
+	std::cout << ((v1 || v2) && v3) << std::endl;	// false
 
 	return (0);
 }

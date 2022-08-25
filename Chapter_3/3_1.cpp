@@ -36,10 +36,17 @@ int main()
 	// 연습 문제
 	int a = 0, b = 0, c = 0, d = 0, t = 0, r = 0, w = 0;
 	
+	// + => =
 	r = 1 + 2 + 3 + 4;
+	std::cout << r << std::endl;					// 10
+	// b = c => a = b
 	a = b = c;
+	std::cout << a << std::endl;					// 0
+	// -- => + -> /=
 	t /= --w + 5;
-	a || b && c || d;
+	std::cout << t << std::endl;					// 0
+	// && => ||
+	std::cout << (a || b && c || d) << std::endl;	// false
 
 	return (0);
 }
