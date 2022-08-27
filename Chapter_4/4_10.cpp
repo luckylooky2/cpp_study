@@ -70,6 +70,8 @@ int main()
 	// assignment operator가 항상 의도한 대로 작동하지 않을 수 있음
 	me2 = me;
 	me2.print();
+	std::cout << &me.age << std::endl;		// 0x16f69b444
+	std::cout << &me2.age << std::endl;		// 0x16f69b41c
 
 	std::cout << sizeof test << std::endl;	// 16
 
