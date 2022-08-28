@@ -1,7 +1,5 @@
 // 6.18 void 포인터
 
-// void pointer, generic pointer(모든 자료형을 다룰 수 있기 때문에)
-
 #include <iostream>
 
 enum Type
@@ -16,6 +14,7 @@ int	main()
 	int		i = 5;
 	char	c = 'a';
 	float	f = 3.0;
+	// generic pointer(모든 자료형을 다룰 수 있기 때문에)
 	void	*ptr = nullptr;
 	Type	type = FLOAT;
 
@@ -27,7 +26,8 @@ int	main()
 	std::cout << &ptr << std::endl;		// 0x16cf53478
 	// error: arithmetic on a pointer to void
 	std::cout << ptr + 1 << std::endl;
-	// warning: ISO C++ does not allow indirection on operand of type 'void *' [-Wvoid-ptr-dereference]
+	// warning: ISO C++ does not allow indirection on 
+	// operand of type 'void *' [-Wvoid-ptr-dereference]
 	std::cout << *ptr << std::endl;
 	// casting
 	// 다형성 구현을 하다보면, 부득이하게 이렇게 해야 할 때가 있음

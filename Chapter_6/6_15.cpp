@@ -1,4 +1,4 @@
-// 6.16 참조와 const
+// 6.15 참조와 const
 
 // 함수의 파라미터로 참조를 사용할 때 편함
 
@@ -33,7 +33,8 @@ int	main()
 	// 차이는 무엇인가? 성능 측면?
 	const int	var_y = 3 + 4;
 	
-	// error: cannot assign to variable 'ref_y' with const-qualified type 'const int &'
+	// error: cannot assign to variable 'ref_y' with 
+	// const-qualified type 'const int &'
 	// 6_14.cpp 참고
 	ref_y = var_y;
 	std::cout << ref_y << std::endl;	// 7

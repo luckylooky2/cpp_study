@@ -12,7 +12,6 @@
 
 // 동적 메모리 할당
 // heap : 메모리 용량이 훨씬 큼
-// 
 
 #include <iostream>
 

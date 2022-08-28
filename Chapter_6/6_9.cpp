@@ -26,6 +26,7 @@ int	main()
 
 	int	array[] = {9, 7, 5, 3, 1};
 
+	// 두 개가 같은 결과
 	for (int i = 0; i < 5; i++)
 	{
 		std::cout << array[i] << " " << (uintptr_t)&array[i] << std::endl;

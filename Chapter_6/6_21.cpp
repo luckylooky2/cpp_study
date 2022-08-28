@@ -1,12 +1,11 @@
 // 6.21 std::vector 소개
 
-// 동적 배열을 대체할 수 있는 쉬운 자료형
-
 #include <iostream>
 #include <vector>
 
 int	main()
 {
+	// 동적 배열을 대체할 수 있는 쉬운 자료형
 	// delete를 해주지 않아도 됨
 	std::vector<int>	array;
 	std::vector<int>	array2 = {1, 2, 3, 4, 5};

@@ -24,7 +24,7 @@ int	main()
 		std::cout << (uintptr_t)&array[i] << " " << array[i] << std::endl;
 
 	// 반드시 동적 할당 해제
-	// w arning: 'delete' applied to a pointer that was allocated with 'new[]';
+	// warning: 'delete' applied to a pointer that was allocated with 'new[]';
 	// did you mean 'delete[]'? [-Wmismatched-new-delete]
 	delete [] new_array;
 

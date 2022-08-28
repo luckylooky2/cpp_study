@@ -8,7 +8,7 @@ struct Rectangle
 {
 	int length;
 	int width;
-}
+};
 
 // 권장하지는 않음 : 몇 명이 될지 모름
 enum	StudnetName
@@ -18,7 +18,7 @@ enum	StudnetName
 	VIOLET,
 	// 따로 세주지 않아도 되어 편함
 	NUM_STUDENTS,
-}
+};
 
 int main()
 {
@@ -28,11 +28,11 @@ int main()
 	// 연속적인 메모리를 빌려옴
 	int	students_score[NUM_STUDENTS];	// 3 int
 	// initialization
-	int	my_array[5] = {1, 2, 3, };
+	int	my_array[5] = {1, 2, 3, };		// 20
 	// C++ 11
-	int	my_array[] {1, 2, 3, };
+	int	my_array[] {1, 2, 3, };			// 12
 
-	std::cout << sizeof(students_score) << std::endl;	// 20
+	std::cout << sizeof(students_score) << std::endl;	// 12
 	// 대부분의 프로그래밍 언어는 0번째부터 시작함
 	students_score[JACKJACK] = 100;		// 1st element
 	students_score[DASH] = 80;			// 2nd element

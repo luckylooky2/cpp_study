@@ -40,31 +40,32 @@ int	main()
 	int	x = 5;
 
 	// 큰 메모리에 저장되어 있는 데이터 중에서 일부분을 CPU가 사용하기 위해 메모리로부터 가져올 때는
-	// 메모리 전체를 모두 뒤지면서 찾는 것이 아니라 필요한 데이터가 저장되어 있는 주소를 사용하여 직접 접근하여 가져옴
+	// 메모리 전체를 모두 찾는 것이 아니라 필요한 데이터가 저장되어 있는 주소를 사용하여 직접 접근하여 가져옴
 	std::cout << x << std::endl;	// 5
 	// address-of operator(&) : 어떤 변수가 어떤 메모리 주소에 데이터를 담고 있는지 알고 싶을 때
 	std::cout << &x << std::endl;	// 0x16f7e7488
 	// de-reference operator(*)
 	std::cout << *&x << std::endl;	// 5
 
-	// // 문법상 차이는 없지만
-	// int 	*ptr_x = &x;
-	// int* 	ptr_y = &x;
-	// // 아래와 같이 동시에 선언이 되지 않기 때문에 실수를 줄이기 위해 뒤에 붙임
-	// int* 	ptr_x = &x, ptr_y = &x;
-	// // 방법 1
-	// typedef int* pint;
-	// pint	ptr_x = &x, ptr_y = &x;
-	// // 방법 2
-	// int* 	ptr_x = &x, *ptr_y = &x;
-	// double	d = 123.0;
-	// // 주소값을 직접 할당? 쓰기 어렵기도 하고, 허용을 해주지 않음(다른 방법이 존재하긴 함)
-	// // 해킹의 원리 : 다른 프로그램이 사용하고 있는 메모리의 주소를 가져옴
-	// // => 다른 프로그램에서 선언한 변수는 아니지만 메모리 주소를 바꿔치기 할 수 있음
-	// double	*ptr_d = 0x16f7e7488;
+	// 문법상 차이는 없지만
+	int 	*ptr_x = &x;
+	int* 	ptr_y = &x;
+	// 아래와 같이 동시에 선언이 되지 않기 때문에 실수를 줄이기 위해 뒤에 붙임
+	int* 	ptr_x = &x, ptr_y = &x;
+	// 방법 1
+	typedef int* pint;
+	pint	ptr_x = &x, ptr_y = &x;
+	// 방법 2
+	int* 	ptr_x = &x, *ptr_y = &x;
 
-	// std::cout << ptr_x << std::endl;				// 0x16f7e7488
-	// std::cout << typeid(ptr_x).name() << std::endl;	// Pi
+	double	d = 123.0;
+	// 주소값을 직접 할당? 쓰기 어렵기도 하고, 허용을 해주지 않음(다른 방법이 존재하긴 함)
+	// 해킹의 원리 : 다른 프로그램이 사용하고 있는 메모리의 주소를 가져옴
+	// => 다른 프로그램에서 선언한 변수는 아니지만 메모리 주소를 바꿔치기 할 수 있음
+	double	*ptr_d = 0x16f7e7488;
+
+	std::cout << ptr_x << std::endl;				// 0x16f7e7488
+	std::cout << typeid(ptr_x).name() << std::endl;	// Pi
 
 	Something	str;
 	Something	*ptr_str;

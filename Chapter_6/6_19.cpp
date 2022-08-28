@@ -1,7 +1,5 @@
 // 6.19 이중 포인터와 동적 다차원 배열
 
-// 2차원 배열은 행렬 구현할 때 많이 사용
-
 #include <iostream>
 
 int	main()
@@ -16,10 +14,13 @@ int	main()
 	ptr = &value;
 	pptr = &ptr;
 
-	std::cout << ptr << " " << *ptr << " " << &ptr << std::endl; 	// 0x16d08b464 5 0x16d08b480
-	std::cout << pptr << " " << *pptr << " " << &pptr << std::endl;	// 0x16d08b480 0x16d08b464 0x16d08b470
-	std::cout << **pptr << std::endl; 								// 5
+	// 0x16d08b464 5 0x16d08b480
+	std::cout << ptr << " " << *ptr << " " << &ptr << std::endl; 	
+	// 0x16d08b480 0x16d08b464 0x16d08b470
+	std::cout << pptr << " " << *pptr << " " << &pptr << std::endl;
+	std::cout << **pptr << std::endl; 	// 5
 
+	// 2차원 배열은 행렬 구현할 때 많이 사용
 	const int	row = 3;
 	const int	col = 5;
 	int			**matrix = new int *[row];
