@@ -1,11 +1,7 @@
 // 5.9 난수 만들기
 
-// 컴퓨터는 난수를 만들 능력이 없음
-
-#include <iostream>
-#include <cstdlib>	// std::rand(), std::srand()
-#include <ctime>	// std::time()
-#include <random>	// C++ 11
+// 컴퓨터는 정확히 동일한 확률로 난수를 만들 능력이 없음
+// 여러 가지 방법으로 난수처럼 보이는 수를 만듦
 
 unsigned int 	PRNG(int num)	// Pseudo Random Number Generator
 {
@@ -43,6 +39,11 @@ void	printNumber(unsigned int (*fp) (int), int num)
 			std::cout << std::endl;
 	}
 }
+
+#include <iostream>
+#include <cstdlib>	// std::rand(), std::srand()
+#include <ctime>	// std::time()
+#include <random>	// C++ 11
 
 int main()
 {

@@ -21,7 +21,7 @@ tryAgain : // label
 		goto  tryAgain;
 	std::cout << sqrt(x) << std::endl;
 
-	// transfer of control bypasses initialization of:C/C++(546)
+	// error: cannot jump from this goto statement to its label
 	goto skip;
 
 	int y = 5;
