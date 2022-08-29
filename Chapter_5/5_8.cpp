@@ -5,6 +5,7 @@
 // while문 : 반복문을 빠져나갈 조건에 써주는 방식 
 
 // continue
+// 바로 조건문에 점프한다고 생각하자
 
 #include <iostream>
 
