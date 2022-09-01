@@ -44,6 +44,8 @@ int	main()
 	Something		sth2;
 
 	// setter 함수를 사용할 수 없음
+	// error: 'this' argument to member function 'setValue' has type 'const Something',
+	// but function is not marked const
 	sth.setValue(3);
 	// getter 함수는?
 	// 컴파일러는 멤버 함수가 const인지 아닌지만 판단

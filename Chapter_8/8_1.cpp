@@ -31,13 +31,16 @@ public :	// access specifier
 	// 정의하는 곳이기 때문에 매개변수 없이 직접 접근할 수 있음
 	void	print()
 	{
-		std::cout << m_name << " " << m_address << " "  << m_age << " " << m_height << " " << m_weight << std::endl;
+		std::cout << m_name << " " << m_address << " "  << \
+		m_age << " " << m_height << " " << m_weight << std::endl;
 	}
 };
 
-void	print(const std::string &name, const std::string &address, const int &age, const double &height, const double &weight);
+void	print(const std::string &name, const std::string &address, \
+			const int &age, const double &height, const double &weight);
 {
-	std::cout << name << " " << address << " "  << age << " " << height << " " << weight << std::endl;
+	std::cout << name << " " << address << " "  << age << " " \
+	<< height << " " << weight << std::endl;
 }
 
 int	main()

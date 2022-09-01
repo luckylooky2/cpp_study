@@ -33,6 +33,7 @@ public:
 		std::cout << "class Calc constructor" << std::endl;
 	}
 
+	// chaining function
 	Calc	&add(const int &value) { m_value += value; return (*this); }
 	Calc	&sub(const int &value) { m_value -= value; return (*this); }
 	Calc	&mult(const int &value) { m_value *= value; return (*this); }

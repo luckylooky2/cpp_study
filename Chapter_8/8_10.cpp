@@ -74,5 +74,8 @@ int main()
 	// 보다는 다음을 추천
 	Something::m_static = 10;
 
+	// this 키워드가 static member variable에는 적용이 되나?
+	// 인스턴스를 통해 접근할 수 있기 때문에, this를 통해서가 아닐수도?
+
 	return (0);
 }

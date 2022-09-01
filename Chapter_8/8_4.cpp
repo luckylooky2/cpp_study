@@ -8,8 +8,9 @@ private:
 	int	m_b;
 
 public:
-	// 사용하는 곳에서 초기화 하지 않으면 아래 에러 발생
-	// error: constructor for 'Something' must explicitly initialize the member 'cl' which does not have a default constructor
+	// 사용하는 곳에서 초기화 하지 않으면(매개변수가 없으면) 아래 에러 발생
+	// error: constructor for 'Something' must explicitly initialize the member 
+	// 'cl' which does not have a default constructor
 	// 멤버 초기화 리스트 => 매개변수도 사용 가능
 	B(const int &input)
 		: m_b(input)

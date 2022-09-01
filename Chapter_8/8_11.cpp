@@ -75,7 +75,8 @@ int	main()
 	// class에 직접 접근해야 함
 	int	(Something::*fp)() = &Something::temp;
 	// member function pointer(static)
-	// error: cannot initialize a variable of type 'int (Something::*)()' with an rvalue of type 'int (*)()'
+	// error: cannot initialize a variable of type 'int (Something::*)()' with 
+	// an rvalue of type 'int (*)()'
 	// class의 멤버 함수 타입으로 변환이 되지 않음
 	// int	(Something::*fp2)() = &Something::getValue;
 	int	(*fp2)() = &Something::getValue;
