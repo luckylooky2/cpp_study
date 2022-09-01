@@ -24,6 +24,9 @@ public:
 		std::cout << "class Student constructor" << std::endl;
 	}
 
+	// 위임 생성자를 사용
+	Student(const std::string &name_in) : Student(0, name_in) {}
+
 	// 만약 이름만 매개변수로 넣어서 인스턴스를 생성하고 싶은 경우
 	// default argument는 오른쪽부터 넣어야 하기 때문에 불가
 	Student(const int &id_in, const std::string &name_in)

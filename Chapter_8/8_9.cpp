@@ -11,6 +11,8 @@ private:
 
 public:
 	Something(void) { std::cout << "class Something constructor" << std::endl; }
+	// 함수의 매개변수로 인스턴스를 call by value할 경우 아래 복사 생성자가 호출
+	Something(const Something &st_in) { std::cout << "class Something copy constructor" << std::endl; }
 	void				setValue(const int &value_in) { m_value = value_in; }
 	// const의 위치 기억하기
 	// 멤버 변수의 값을 바꾸지 않겠다고 컴파일러에게 알려주는 것
@@ -23,6 +25,8 @@ public:
 	~Something(void) { std::cout << "class Something destructor" << std::endl; }
 };
 
+// 복사가 일어날 때 기본 생성자가 아니라 복사 생성자가 호출되어 인스턴스를 복사
+// 의도한대로 함수가 작동하지 않을 수 있어 call by reference로 넘겨주는 것이 좋다.
 void	print1(Something sth)
 {
 	std::cout << &sth << std::endl;
