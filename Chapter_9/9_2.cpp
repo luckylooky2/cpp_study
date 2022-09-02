@@ -25,6 +25,8 @@ public:
 	}
 
 	// 첫 번째 매개변수가 클래스가 아니고 ostream라서 멤버 함수로 만들기 어려움
+	// error: overloaded 'operator<<' must be a binary operator (has 3 parameters)
+	// 일반 함수로 만들거나 friend 함수로 만들기
 	friend std::ostream &operator << (std::ostream &out, const Point &point)
 	{
 		out << point.m_x << " " << point.m_y << " " << point.m_z;

@@ -1,5 +1,13 @@
 // 9.1 산술 연산자 오버로딩하기
 
+// 연산자 오버로딩
+// C++에서는 기존의 C 언어에서 제공하고 있는 연산자에 대하여 
+// 그 의미를 다시 부여하는 것을 "연산자 오버로딩" 또는 "연산자 중복(재정의)"라 함
+// 연산자 오버로딩은 기본적으로 함수의 오버로딩과 같이 연산자도 하나의 함수라는 개념을 사용하여 중복 정의
+// 중복되는 연산자 함수는 클래스의 멤버함수나 프렌드 함수로 정의
+// 함수 이름 대신에 operator 키워드를 사용하고 다음에 연산자를 기술
+// 컴파일러가 연산자를 함수로 변경하여 호출
+
 #include <iostream>
 
 class Cents
@@ -21,7 +29,8 @@ public:
 	// // 2. friend 함수로 연산자 오버로딩 하는 방법
 	// friend Cents	operator + (const Cents &c1, const Cents &c2);
 
-	//  3. 멤버 함수로 연산자 오버로딩을 하는 방법
+	// 3. 멤버 함수로 연산자 오버로딩을 하는 방법
+	// v1 + v2 => v1.operator+(v2)
 	// 파라미터가 너무 많다
 	// why? this(호출하는 인스턴스)를 포함해야 하기 때문
 	// unary + => 매개변수 0개
@@ -54,6 +63,7 @@ Cents	&add3(const Cents &c1, const Cents &c2)
 }
 
 // // 1. 일반적인 함수로 연산자 오버로딩 하는 방법
+// // v1 + v2 = oprator+(v1, v2)
 // Cents	operator + (const Cents &c1, const Cents &c2)
 // {
 // 	return (Cents(c1.getCents() + c2.getCents()));
