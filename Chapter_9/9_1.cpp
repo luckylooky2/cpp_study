@@ -7,6 +7,7 @@
 // 중복되는 연산자 함수는 클래스의 멤버함수나 프렌드 함수로 정의
 // 함수 이름 대신에 operator 키워드를 사용하고 다음에 연산자를 기술
 // 컴파일러가 연산자를 함수로 변경하여 호출
+// http://www.parkjonghyuk.net/lecture/2019-2nd-lecture/programming2/ch/chap08.pdf
 
 #include <iostream>
 
