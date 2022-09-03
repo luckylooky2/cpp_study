@@ -1,4 +1,4 @@
-// 10_2_Position2D
+// 10_2_Position2D.hpp
 
 #ifndef TEN_TWO_POSITION2D_HPP
 #define TEN_TWO_POSITION2D_HPP
