@@ -16,7 +16,7 @@ public:
 	Teacher(const std::string name_in = "No name")
 	{
 		m_name = name_in;
-		std::cout << "class Teacher constructor" << std::endl;
+		// std::cout << "class Teacher constructor" << std::endl;
 	}
 
 	const std::string	getName() const { return (m_name); }
@@ -27,7 +27,7 @@ public:
 
 	~Teacher()
 	{
-		std::cout << "class Teacher destructor" << std::endl;
+		// std::cout << "class Teacher destructor" << std::endl;
 	}
 };
 

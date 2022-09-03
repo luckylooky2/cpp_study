@@ -20,7 +20,7 @@ public:
 	{
 		m_name = name_in;
 		m_intel = intel_in;
-		std::cout << "class Student constructor" << std::endl;
+		// std::cout << "class Student constructor" << std::endl;
 	}
 
 	const std::string	getName() const { return (m_name); }
@@ -36,7 +36,7 @@ public:
 
 	~Student()
 	{
-		std::cout << "class Student destructor" << std::endl;
+		// std::cout << "class Student destructor" << std::endl;
 	}
 };
 
