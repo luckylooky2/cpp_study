@@ -1,5 +1,5 @@
 // 9.7 괄호 연산자(()) 오버로딩과 함수 객체
-
+ 
 // 괄호 연산자
 // 함수를 호출할 때 사용
 // 오버로딩하면 함수가 객체인 것처럼 사용할 수 있음
@@ -12,11 +12,11 @@ private:
 	int	m_counter = 0;
 
 public:
-	// // 첨자 연산자([])를 오버로딩하는 방법과 똑같음
-	// int			operator()(int i)
-	// {
-	// 	return (m_counter += i);
-	// }
+	// 첨자 연산자([])를 오버로딩하는 방법과 똑같음
+	int			operator()(int i)
+	{
+		return (m_counter += i);
+	}
 
 	// // chaining
 	// Accumulator &operator()(int i)
@@ -25,12 +25,12 @@ public:
 	// 	return (*this);
 	// }
 
-	// friend std::ostream&	operator<<(std::ostream& out, const Accumulator &acc)
-	// {
-	// 	out << acc.m_counter;
+	friend std::ostream&	operator<<(std::ostream& out, const Accumulator &acc)
+	{
+		out << acc.m_counter;
 
-	// 	return (out);
-	// }
+		return (out);
+	}
 };
 
 int	main()

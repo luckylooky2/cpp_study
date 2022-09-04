@@ -25,10 +25,12 @@ public:
 
 	const std::string	getName() const { return (m_name); }
 	const unsigned int	getIntel() const { return (m_intel); }
+
 	void				setName(const std::string &name)
 	{
 		m_name = name;
 	}
+	
 	void				setIntel(const unsigned int &intel)
 	{
 		m_intel = intel;

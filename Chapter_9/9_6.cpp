@@ -86,7 +86,8 @@ int main()
 	new_list[3] = 100;
 	std::cout << new_list[3] << std::endl;		// 100
 
-	// error: cannot assign to return value because function 'operator[]' returns a const value
+	// error: cannot assign to return value 
+	// because function 'operator[]' returns a const value
 	// const_list[3] = 100;
 	std::cout << const_list[3] << std::endl;	// 12
 

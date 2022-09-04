@@ -33,7 +33,10 @@ private:
 	int	m_dollars = 0;
 
 public:
-	Dollar(const int &input) : m_dollars(input) { std::cout << "class Dollar constructor" << std::endl; }
+	Dollar(const int &input) : m_dollars(input) 
+	{
+		std::cout << "class Dollar constructor" << std::endl;
+	}
 	
 	operator Cents()
 	{

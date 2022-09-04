@@ -40,10 +40,11 @@ public:
 	}
 };
 
-// error: invalid operands to binary expression ('std::ostream' (aka 'basic_ostream<char>') and 'Digit')
+// error: invalid operands to binary expression 
+// ('std::ostream' (aka 'basic_ostream<char>') and 'Digit')
 // const를 붙여주니 해결
 // => 오버로딩의 시그니처가 <ostream>의 원 함수의 시그니처와 동일해야 하기 때문에
-// 컴파일러는 함수를 3가지로 함수를 구분 :  함수를 구분하기 위한 구성요소를 시그너처(signature)라 한다.
+// 컴파일러가 함수를 구분하기 위한 구성요소를 시그너처(signature)라 한다.
 // 1. 함수의 이름
 // 2. 매개변수의 개수
 // 3. 매개변수의 자료형

@@ -34,7 +34,7 @@ public:
 		return (out);
 	}
 
-	// // 입력 받을 인스턴스는 const가 아니어야 함
+	// // 입력 받을 인스턴스는 const가 아니어야 함 => 입력받아 수정해야 하기 때문에
 	// friend std::istream &operator >> (std::istream &in, Point &point)
 	// {
 	// 	in >> point.m_x >> point.m_y >> point.m_z;

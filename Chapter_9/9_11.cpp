@@ -11,7 +11,7 @@
 #include <cassert>
 #include <iostream>
 
-// string을 사용하면 이미 구현이 되어있기 때문에 편함
+// string을 사용하면 이미 연산자 구현이 되어있기 때문에 편함
 // 추가로 기능 구현?
 // 1. string class를 상속받아 추가 구현
 // 2. 만든 클래스에서 std::string을 사용 => 퍼포먼스가 약간은 떨어질 수 있음
