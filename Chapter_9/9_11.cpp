@@ -60,6 +60,7 @@ public:
 	int		getLength() const { return (m_length); }
 
 	// assignment operator overloading
+	// overloading하기 전의 기본 = 연산자도 테스트해보자
 	MyString&	operator=(const MyString &source)
 	{
 		// // shallow copy

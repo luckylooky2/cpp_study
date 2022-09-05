@@ -15,6 +15,10 @@
 // p1이 소멸되어도, d1은 소멸되지 않음
 // 3. 방향성 => 단방향 or 양방향
 
+// 다대다 구조에서는
+// hospital처럼 중계하는 class가 필요함
+// Database에서도 마찬가지(새로운 테이블을 만들어서 키클 빼오는 방식)
+
 #include <iostream>
 #include <vector>
 #include <string>

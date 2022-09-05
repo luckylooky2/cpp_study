@@ -35,11 +35,13 @@ public:
 
 	friend bool operator != (const Cents &c1, const Cents &c2);
 
-	// 왜 안되는가?
-	bool operator < (const Cents &cents)
-	{
-		return (this->m_cents < cents.m_cents);
-	}
+	// 멤버 함수로는 왜 안되는가?
+	// sort 안에서 멤버 함수로 정의한 연산자를 찾을 수 없음?
+	// https://cplusplus.com/reference/algorithm/sort/
+	// bool operator < (const Cents &cents)
+	// {
+	// 	return (this->m_cents < cents.m_cents);
+	// }
 };
 
 bool operator != (const Cents &c1, const Cents &c2)
@@ -47,13 +49,13 @@ bool operator != (const Cents &c1, const Cents &c2)
 	return (c1.m_cents != c2.m_cents);
 }
 
-// // sort에서는 >가 아니라 <를 구현해야 함
-// // error: invalid operands to binary expression ('const Cents' and 'const Cents')
-// // 연산자 오버로딩이 잘못 되었다는 뜻
-// bool operator < (const Cents &c1, const Cents &c2)
-// {
-// 	return (c1.getCents() < c2.getCents());
-// }
+// sort에서는 >가 아니라 <를 구현해야 함
+// error: invalid operands to binary expression ('const Cents' and 'const Cents')
+// 연산자 오버로딩이 잘못 되었다는 뜻
+bool operator < (const Cents &c1, const Cents &c2)
+{
+	return (c1.getCents() < c2.getCents());
+}
 
 // 멤버 함수로 만들기 어려움
 std::ostream &operator << (std::ostream &out, const Cents &cents)

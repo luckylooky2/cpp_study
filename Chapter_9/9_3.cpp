@@ -26,6 +26,12 @@ public:
 		return (Cents(-m_cents));
 	}
 
+	// Cents	&operator - ()
+	// {
+	// 	this->m_cents = -(this->m_cents);
+	// 	return (*this);
+	// }
+
 	// 뭘 return할지는 문맥, 목적상 결정해야 함
 	bool	operator ! () const
 	{

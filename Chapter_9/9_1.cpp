@@ -43,6 +43,11 @@ public:
 		return (this->m_cents + c2.m_cents);
 	}
 
+	Cents	operator+(int num)
+	{
+		return (Cents(m_cents + num));
+	}
+
 	// 멤버 함수로만 해야하는 연산자
 	// =(assignment), [](subscript), ()(function call), ->(member selection)
 };
@@ -76,6 +81,11 @@ Cents	&add3(const Cents &c1, const Cents &c2)
 // {
 // 	return (Cents(c1.m_cents + c2.m_cents));
 // }
+
+Cents	operator+(int num, Cents &cents)
+{
+	return (cents + num);
+}
 
 int main()
 {
