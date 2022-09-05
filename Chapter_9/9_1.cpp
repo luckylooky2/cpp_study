@@ -43,6 +43,11 @@ public:
 		return (this->m_cents + c2.m_cents);
 	}
 
+	// 연산자 오버로딩을 클래스 안에서 정의한 이유?
+	// 클래스의 멤버를 이용한 연산임을 일부러 보여주기 위해
+	// 일반 함수로 연산자 오버로딩(전역)
+	// 1 + (class) 같은 경우에는 int 클래스 내부를 바꿔야 하는 번거로움
+	// 전역에서 정의하면 클래스 내부를 바꿔야 할 필요가 없음
 	Cents	operator+(int num)
 	{
 		return (Cents(m_cents + num));
