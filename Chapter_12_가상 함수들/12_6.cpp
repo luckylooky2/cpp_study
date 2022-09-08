@@ -66,7 +66,6 @@ int	main()
 	std::cout << sizeof(Base) << std::endl;		// 8
 	std::cout << sizeof(Derived) << std::endl;	// 8
 
-
 	return (0);
 }
 

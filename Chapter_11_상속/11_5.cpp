@@ -44,6 +44,9 @@ public:
 	};
 };
 
+// 기능 1 : 자식 클래스 내부에서 접근 범위를 제한할 수 있음
+// class Derived : protected Base 이기 떄문에
+// m_private를 가져올 수 없음
 // class Derived : private Base 이기 떄문에
 // m_private, m_protected를 가져올 수 없음
 class GrandChild : public Derived
@@ -54,6 +57,13 @@ public:
 		// private으로 상속받은 클래스에서는 모두 사용할 수 없음
 		Derived::m_public = 1;
 		Derived::m_protected = 1;
+		Derived::m_private = 1;
+
+		// protected로 상속받은 클래스에서는 private만 사용하지 못함
+		// 가능
+		Derived::m_public = 1;
+		Derived::m_protected = 1;
+		// 불가
 		Derived::m_private = 1;
 	};
 };
@@ -71,6 +81,7 @@ int	main()
 	base.m_protected = 1;
 	base.m_private = 1;
 
+	// 기능 2 : 자식 클래스 외부에서 접근을 제한
 	// Derived : public Base
 	// 외부에서 접근할 때, 더 제한된 방향으로 public까지 허용
 	// 가능

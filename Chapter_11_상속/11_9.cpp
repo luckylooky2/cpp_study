@@ -81,6 +81,7 @@ int	main()
 
 	my_device.netWorking();
 	my_device.plugAndPlay();
+	// 모호성
 	// error: member 'getId' found in multiple base classes of different types
 	my_device.getId();
 	// 해결

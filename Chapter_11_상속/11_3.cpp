@@ -38,12 +38,12 @@ public:
 	// Mother()이 뒤에 있어도 먼저 초기화
 		: m_d(1.0), Mother(1024)
 	{
-		// // private이기 때문에 접근 불가
-		// m_i = 10;
-		// // public, protected라면 사용 가능
-		// m_i = 10;
-		// this->m_i = 10;
-		// this->Mother::m_i = 10;
+		// private이기 때문에 접근 불가
+		m_i = 10;
+		// public, protected라면 사용 가능
+		m_i = 10;
+		this->m_i = 10;
+		this->Mother::m_i = 10;
 		m_d = 1.0;
 		std::cout << "class Child constructor" << std::endl;
 	}

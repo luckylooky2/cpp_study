@@ -44,7 +44,7 @@ public:
 	{
 		Base::print();
 		std::cout << "I'm derived" << std::endl;
-		// 의도와 달리 재귀 호출 => infinite loop
+		// 의도(부모 클래스 호출)와 달리 자식 클래스 재귀 호출 => infinite loop
 		// print();
 	}
 };
@@ -59,6 +59,10 @@ std::ostream& operator<<(std::ostream &out, const Derived &derived)
 {
 	// 부모 클래스로 캐스팅이 되는 이유?
 	// Derived class를 메모리에 할당할 때, Derived + Base 데이터를 모두 할당
+	// 업캐스팅 : static_cast밖에 사용하지 못함
+	// 부모 클래스도 출력하고 싶은 경우
+	// 1. 연산자 오버로딩을 통해서 => 업캐스팅하여 연산자 오버로딩 사용
+	// 2. 출력 함수가 있다면 Base::print()처럼 사용
 	std::cout << static_cast<Base>(derived);
 	out << "This is derived output" << std::endl;
 	return (out);

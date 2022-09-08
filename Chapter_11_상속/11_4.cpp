@@ -52,6 +52,8 @@ class C : public B
 {
 public:
 	C(int a, double b, char c)
+	// 바로 위 부모 클래스만 생성자를 호출할 수 있음
+	// A(a) : 호출할 수 없음
 		: B(a, b)
 	{
 		std::cout << "class C constuctor" << " ";

@@ -66,10 +66,11 @@ public:
 	}
 
 	double	getValue() { return (m_d); }
+	// child.getValue()는 Mother? Child?
 	// 부모 클래스와 같은 함수가 존재할 경우, 자신 클래스의 더 우선하여 호출
 	void	setValue(const double &d_in) { m_d = d_in; }
-	// 중복 해결
-	// 방법 1 : 매개변수 변경
+	// 부모 클래스 멤버와 자식 클래스 멤버 getter, setter 함수를 설정하는 방법
+	// 방법 1 : 한 번에 처리하는 방법
 	void	setValue(const int &i_in, const double &d_in)
 	{
 		// 부모 클래스 멤버 접근 문제
@@ -81,7 +82,8 @@ public:
 		Mother::setValue(i_in);
 		m_d = d_in;
 	}
-	// 방법 2 : 함수 이름 변경
+	// 방법 2 : 따로 처리하는 방법
+	// setDoubleValue(), setIntValue()
 };
 
 class Son : public Mother

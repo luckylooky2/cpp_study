@@ -55,3 +55,6 @@ int	main()
 
 	return (0);
 }
+
+// 컴파일타임에 결정 : static
+// 런타임에 결정 : dynamic

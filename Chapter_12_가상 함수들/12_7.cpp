@@ -142,6 +142,7 @@ int	main()
 
 	cow.speak();		// hello Mooo 
 
+	// 다형성을 잘 구현한 예
 	FileErrorLog	file_log;
 	ConsoleErrorLog	console_log;
 

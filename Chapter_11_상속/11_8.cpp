@@ -38,7 +38,7 @@ public:
 private:
 	// 방법 1. using 키워드
 	using Base::print;	// do not add () : 괄호는 실행시킨다는 의미
-	// 방법 2. delete 키워드
+	// 방법 2. delete 키워드(C++ 11)
 	void	print() = delete;
 };
 

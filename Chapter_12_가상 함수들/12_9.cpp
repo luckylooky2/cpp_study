@@ -72,6 +72,7 @@ int	main()
 	
 	// 1. reference => vector는 reference type 지원하지 않음
 	// std::reference_wrapper를 사용
+	// std::vector<Base &>	my_vec1;
 	std::vector<std::reference_wrapper<Base> >	my_vec2;
 	my_vec2.push_back(base);
 	my_vec2.push_back(derived);
