@@ -49,7 +49,7 @@ int	main()
 	a_char.Something();		// c(char)
 	a_int.test();
 	a_double.test();
-	// a_char.test();
+	a_char.test();
 
 	// after specialization
 	a_int.Something();		// i(int)
