@@ -23,11 +23,32 @@ public:
 	{	
 	}
 
+	// copy constructor
+	AutoPtr(AutoPtr &a)
+	{
+		// double free 해결
+		// 포인터를 l-value에 넘겨줌
+		m_ptr = a.m_ptr;
+		a.m_ptr = nullptr;
+	}
+
 	~AutoPtr()
 	{
 		// 소멸자에서 nullptr가 아니면 지워버림
 		// 이런 역할만 해줘도 상당히 편함
 		if (m_ptr != nullptr) delete m_ptr;
+	}
+
+	// assignment operator
+	AutoPtr& operator=(AutoPtr &a)
+	{
+		if (&a == this)
+			return (this);
+		delete m_ptr;
+		// 소유권 이전
+		m_ptr = a.m_ptr;
+		a.m_ptr = nullptr;
+		return (*this);
 	}
 
 	// de-referencing operator
