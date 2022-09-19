@@ -16,6 +16,7 @@ private:
 	// 자기 자신도 지우지 못하는 상태가 됨(순환 상태)
 	// std::shared_ptr<Person>	m_partner;
 	// 이 경우 weak_ptr을 사용하여 해결
+	// weak_ptr은 카운트를 참조하지 않기 때문에 delete를 함
 	std::weak_ptr<Person>	m_partner;
 
 public:

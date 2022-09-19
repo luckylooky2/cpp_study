@@ -9,7 +9,7 @@
 void	doSomething(int &lref)
 {
 	// 일반적인 경우 l-value로 move semantics를 사용하면
-	// 충돌이 날 가능성이 있음
+	// 충돌이 날 가능성이 있음(double free?)
 	std::cout << "l-value ref" << std::endl;
 }
 

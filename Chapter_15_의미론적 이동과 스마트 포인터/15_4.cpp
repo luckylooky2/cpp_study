@@ -75,6 +75,8 @@ int	main()
 		std::cout << str << std::endl;					// Hello
 		std::cout << v[0] << std::endl;					// Hello
 		// str을 r-value로 취급 => move semantics
+		// push_back 안에서 동적 할당을 하기 때문에 move semantics가 가능한 것?
+		// 보이는 것은 r-value이지만? 포인터로 보내는 것인가?
 		v.push_back(std::move(str));
 		// str에 있던 것이 move가 된 것
 		std::cout << str << std::endl;					// 
@@ -95,3 +97,7 @@ int	main()
 
 	return (0);
 }
+
+// 스마트 포인터라는 큰 개념 안에 유니크 포인터, 쉐어드 포인터
+// 유니크 포인터를 사용하려면 move semantics가 구현이 되어 있어야 함
+// 스마트 포인터는 주소를 잃어버려도 leak이 나지 않게 하는 목적으로 설계?

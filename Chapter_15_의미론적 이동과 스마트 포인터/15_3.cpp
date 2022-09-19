@@ -24,13 +24,14 @@ int main(void)
 	std::streambuf	*orig_buf = std::cout.rdbuf();
 	Timer			timer;
 
-	// std::cout.rdbuf(NULL);	// disconnect cout from buffer
+	std::cout.rdbuf(NULL);	// disconnect cout from buffer
 	{
 		AutoPtr<Resource>	main_res;
 		// 1. class AutoPtr default constructor
+		// 포인터이기 떄문에 아직 Resource 인스턴스는 존재하지 않음
 		
 		main_res = generateResource();
-		// AutoPtr 복사 연산 과정에서 Resouce 인스턴스를 생성 후 복사 연산
+		// AutoPtr 복사 연산 과정에서 Resouce 인스턴스를 생성 후 복사 연산(deep copy)
 		// 4. class AutoPtr copy assignment
 		// 5. class Resource default constructor
 		// 6. class Resource copy assignment
