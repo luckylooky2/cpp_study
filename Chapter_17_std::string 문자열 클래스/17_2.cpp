@@ -1,4 +1,4 @@
-// 17_2 std::string의 생성자들과 형변환
+// 17.2 std::string의 생성자들과 형변환
 
 #include <iostream>
 #include <string>
