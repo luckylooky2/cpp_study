@@ -28,6 +28,7 @@ int	main()
 	std::cout << my_str2.empty()  << std::endl;	// true
 
 	// 임의로 용량을 잡아둘 수 있음
+	// 최소한 1000 바이트의 공간을 잡아두는 것 => 1024
 	my_str.reserve(1000);
 
 	return (0);
