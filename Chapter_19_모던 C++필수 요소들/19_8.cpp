@@ -153,12 +153,209 @@ public:
 		auto	c = crx;
 		// const Examples::S *d
 		auto	d = p;
+		// const 값인데 복사를 해버리면 상관 없음
 		// int e
 		auto	e = p->m_x;
-	}
-	
-};
 
+		// decltype은 auto와 다르게 reference까지 그대로 가져옴
+		// 변수가 선언이 된 타입을 그대로 가져옴
+		// typedef int x_type
+		typedef decltype(x)			x_type;
+		// typedef const int cx_type
+		typedef decltype(cx)		cx_type;
+		// typedef const int &crx_type
+		typedef decltype(crx)		crx_type;
+		// typedef int m_x_type
+		typedef decltype(p->m_x)	m_x_type;
+
+		// add reference to l-values
+		// typedef int &xp_type
+		typedef decltype((x))		xp_type;
+		// typedef const int &cx_type
+		typedef decltype((cx))		cxp_type;
+		// 원래 &가 있었다면 유지
+		// typedef const int &crx_type
+		typedef decltype((crx))		crxp_type;
+		// & 때문에 변화가 되면 안 된다는 const 조건이 같이 옴
+		// typedef const int &m_x_type
+		typedef decltype((p->m_x))	m_xp_type;
+	}
+
+	const S foo()
+	{
+		return (S());
+	}
+
+	const int&	foobar()
+	{
+		return (123);
+	}
+
+	void	ex10()
+	{
+		std::vector<int>	vect = {42, 43};
+
+		// Examples 클래스 안에 선언된 inner structure이기 떄문
+		// struct Examples::S
+		auto	a = foo();
+		// const 유지
+		// typedef const Examples::S foo_type
+		typedef decltype(foo())	foo_type;
+
+		auto	b = foobar();
+		// const int & 그대로 유지
+		// typedef const int &foobar_type
+		typedef decltype(foobar())	foobar_type;
+
+		auto	itr = vect.begin();
+		// typedef std::__1::vector<int>::iterator iterator_type
+		typedef decltype(vect.begin())	iterator_type;
+
+		auto	first_element = vect[0];
+		// vector의 오버로딩 되어있는 [] operator가 return 할 때 &를 리턴
+		// int &second_element
+		// inline int &std::__1::vector<int>::operator[](size_t __n) noexcept
+		decltype(vect[1])	second_element = vect[1];
+	}
+
+	void	ex11()
+	{
+		int	x = 0;
+		int	y = 0;
+		const int	cx = 42;
+		const int 	cy = 43;
+		double		d1 = 3.14;
+		double		d2 = 2.72;
+
+		// typedef int prod_xy_type => 정수 x 정수
+		typedef decltype(x * y)	prod_xy_type;
+		// int a
+		auto	a = x * y;
+		
+		// typedef int prod_cxcy_type => 곱한 결과는 r-value이기 때문에
+		typedef decltype(cx * cy)	prod_cxcy_type;
+		// int b
+		auto	b = cx * cy;
+
+		// 주의 => double일 때는 &로 받음
+		// typedef double &cond_type
+		typedef decltype(d1 < d2 ? d1 : d2)	cond_type;			// result is l-value. * is added.
+		// double c
+		auto	c = (d1 < d2 ? d1 : d2);
+
+		// typedef double cond_type_mixed => 승급
+		typedef decltype(x < d2 ? x : d2)	cond_type_mixed;
+		// double d
+		auto	d = (x < d2 ? x : d2);
+
+		// error
+		// 입력되는 두 변수들의 타입이 다를 경우, 작동하지 않음
+		// 매번 캐스팅하기는 불편 => 만들어보자
+		// auto	e = std::min(x, dbl);
+	}
+
+	template<typename T, typename S>
+	// T, S가 타입이 같은 경우 위에서처럼 &타입이 됨 => 불편한 경우
+	auto	fpmin_wrong(T x, S y) -> decltype(x < y ? x : y)
+	{
+		return ((x < y ? x : y));
+	}
+
+	template<typename T, typename S>
+	// std::remove_reference : 레퍼런스를 붙는다면 제거한 typename을 사용하라
+	auto	fpmin(T x, S y) ->
+		typename std::remove_reference<decltype(x < y ? x : y)>::type
+	{
+		return ((x < y ? x : y));
+	}
+
+	void	ex12()
+	{
+		int	i = 42;
+		double	d = 45.1;
+		// 자료형이 다르므로 캐스팅
+		auto	a = std::min(static_cast<double>(i), d);
+
+		int	&j = i;
+
+		// typedef double &fpmin_return_type1
+		// 실수를 할 확률이 높아짐
+		typedef decltype(fpmin_wrong(d, d))	fpmin_return_type1;
+		// typedef double fpmin_return_type2
+		typedef decltype(fpmin_wrong(i, d))	fpmin_return_type2;
+		// typedef double fpmin_return_type3
+		typedef decltype(fpmin_wrong(j, d))	fpmin_return_type3;
+	}
+
+	void	ex13()
+	{
+		std::vector<int>	vect;		// vector is empty
+
+		// decltype은 실제로는 수행을 시키지 않기 때문에
+		// 괄호 안에 vect[0]을 실행하지 않아 문제가 발생하지 않음
+		// 컴파일타임에 결정을 함
+		// typedef int &integer
+		typedef decltype(vect[0])	integer;
+	}
+
+	template<typaname R>
+	class SomeFunctor
+	{
+	public:
+		typedef R result_type;
+
+		SomeFunctor() {}
+		result_type	operator() ()
+		{
+			return (R());
+		}
+	};
+
+	void	ex14()
+	{
+		// R = int
+		// result_type = int
+		SomeFunctor<int>	func;
+		// 1. func의 타입을 찾아냄
+		// 2. SomeFunctor<int> 안의 result_type를 찾음(int)
+		// 결과적으로 integer = int
+		typedef	decltype(func)::result_type	integer;	// nested type
+	}
+
+	// 람다도 decltype으로 데이터 타입을 찾을 수 있음
+	// 람다는 데이터 타입을 선언하기 불편
+	void	ex15()
+	{
+		// int lambda()
+		// class lambda []()->int
+		auto	lambda = []() {return 42};
+		// 같은 기능을 하는 람다 함수가 생김
+		// lambda []()->int lambda2
+		decltype(lambda)		lambda2(lambda2);
+		// reference 타입
+		// lambda []()->int &lambda3
+		decltype((lambda)) 		lambda3(lambda2);
+
+		std::cout << "Lambda functions" << std::endl;
+		// 서로 다름
+		std::cout << &lambda << " " << &lambda2 << std::endl;
+		// 서로 같음
+		std::cout << &lambda << " " << &lambda3 << std::endl;
+	}
+
+	void	ex16()
+	{
+		// generic lambda
+		// 다른 함수에서는 파라미터로 auto를 사용하지 못하는데
+		// 람다에서 사용할 수 있음
+		auto	lambda = [](auto x, auto y)
+		{
+			return (x + y);
+		}
+		// double, int, double
+		std::cout << lambda(1.1, 2) << lambda(3, 4) << lambda(4.5, 2.2) << std::endl;
+	}
+};
 
 int	main()
 {
