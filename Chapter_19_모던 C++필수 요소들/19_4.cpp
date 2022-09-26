@@ -40,7 +40,7 @@ int	main()
 			// unlock을 혹시나 못할 때 lock guard => 사용 권장
 			// 스코프를 벗어나면서 소멸자? => 자동으로 unlock()
 			std::lock_guard	lock(mutex);
-			// C++ 17 : 더 발전된 lock_guard
+			// C++ 17 : 더 발전된 lock_guard(더 엄격한 버전)
 			std::scoped_lock	lock(mutex);
 		}
 	};

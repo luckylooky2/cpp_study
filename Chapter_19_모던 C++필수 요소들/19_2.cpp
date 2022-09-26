@@ -37,6 +37,7 @@ int	main()
 	auto					result3 = my_func3();
 	auto					result4 = my_func4();
 	// 다른 방법 => 파이썬과 비슷한 방법?
+	// JS 구조 분해 할당
 	auto					[a, b] = my_func4();
 
 	std::cout << std::get<0>(result2) << " " << std::get<1>(result2) << std::endl;	// 123 456

@@ -28,6 +28,9 @@
 // 장) 메모리를 공유할 수 없는 분산 처리의 단점을 극복함 => 프로그래머를 편하게 함
 // 단) 양날의 검 => 동기화 문제로 프로그래머를 위험하게 하기도 함
 // 자동으로 멀티쓰레딩을 알아서 해주는 것이 아니고 멀티쓰레딩 프로그램을 구현해야 함
+// 멀티프로세싱이 더 느린 이유? 컨텍스트 스위칭 비용이 더 비싸기 때문
+// 회의실의 책상을 다 빼는 꼴
+// https://www.youtube.com/watch?v=DmZnOg5Ced8
 
 // Windows => Task Manager, Mac => Activity Monitor
 // core : 8, logical processors : 16
@@ -41,61 +44,61 @@
 #include <vector>
 #include <mutex>
 
-// int	main()
-// {
-// 	// 아무 일도 안 하고 있는 것 같지만 자원을 사용 중
-// 	// Utilization : 8% => 15%
-// 	// logical processors를 고려한 점유율 => 1 / 16 * 100(%)
-// 	// while (true)
-// 	// {
+int	main()
+{
+	// 아무 일도 안 하고 있는 것 같지만 자원을 사용 중
+	// Utilization : 8% => 15%
+	// logical processors를 고려한 점유율 => 1 / 16 * 100(%)
+	// while (true)
+	// {
 
-// 	// }
+	// }
 
-// 	// CPU 코어의 개수
-// 	const int	num_pro = std::thread::hardware_concurrency();
+	// CPU 코어의 개수
+	const int	num_pro = std::thread::hardware_concurrency();
 
-// 	std::cout << num_pro << std::endl;						// 6
-// 	// tid
-// 	std::cout << std::this_thread::get_id() << std::endl;	// 0x107a10dc0
+	std::cout << num_pro << std::endl;						// 6
+	// tid
+	std::cout << std::this_thread::get_id() << std::endl;	// 0x107a10dc0
 
-// 	// 람다 함수를 이용한 쓰레드 생성
-// 	// libc++abi.dylib: terminating
-// 	// zsh: abort      ./a.out
-// 	// 생성된 쓰레드는 생성한 쓰레드와 상관없이 실행됨(detached 상태)
-// 	// 메인 쓰레드가 먼저 끝나서 발생한 오류 => join
-// 	// 모든 레드는 동시에 실행됨(concurrency) => 순서가 일정하지 않음
-// 	std::thread	t1 = std::thread([]() { 
-// 		std::cout << std::this_thread::get_id() << std::endl;	// 0x7000021d5000
-// 		while (true){}});
-// 	std::thread	t2 = std::thread([]() { 
-// 		std::cout << std::this_thread::get_id() << std::endl;	// 0x7000022db000
-// 		while (true){}});
-// 	std::thread	t3 = std::thread([]() { 
-// 		std::cout << std::this_thread::get_id() << std::endl;	// 0x700002258000
-// 		while (true){}});
-// 	std::thread	t4 = std::thread([]() { 
-// 		std::cout << std::this_thread::get_id() << std::endl;	// 0x70000235e000
-// 		while (true){}});
+	// 람다 함수를 이용한 쓰레드 생성
+	// libc++abi.dylib: terminating
+	// zsh: abort      ./a.out
+	// 생성된 쓰레드는 생성한 쓰레드와 상관없이 실행됨(detached 상태)
+	// 메인 쓰레드가 먼저 끝나서 발생한 오류 => join(다시 메인 쓰레드와 합쳐지기 때문에)
+	// 모든 레드는 동시에 실행됨(concurrency) => 순서가 일정하지 않음
+	std::thread	t1 = std::thread([]() { 
+		std::cout << std::this_thread::get_id() << std::endl;	// 0x7000021d5000
+		while (true){}});
+	std::thread	t2 = std::thread([]() { 
+		std::cout << std::this_thread::get_id() << std::endl;	// 0x7000022db000
+		while (true){}});
+	std::thread	t3 = std::thread([]() { 
+		std::cout << std::this_thread::get_id() << std::endl;	// 0x700002258000
+		while (true){}});
+	std::thread	t4 = std::thread([]() { 
+		std::cout << std::this_thread::get_id() << std::endl;	// 0x70000235e000
+		while (true){}});
 
-// 	std::vector<std::thread>	my_threads;
+	std::vector<std::thread>	my_threads;
 
-// 	my_threads.resize(num_pro);
+	my_threads.resize(num_pro);
 
-// 	for (auto &e : my_threads)
-// 		e = std::thread([]() { 
-// 		std::cout << std::this_thread::get_id() << std::endl;	// 0x70000ed0b000
-// 		while (true){}});
+	for (auto &e : my_threads)
+		e = std::thread([]() { 
+		std::cout << std::this_thread::get_id() << std::endl;	// 0x70000ed0b000
+		while (true){}});
 
-// 	// t1 ~ t4가 끝날 때까지 wait
-// 	t1.join();
-// 	t2.join();
-// 	t3.join();
-// 	t4.join();
-// 	for (auto &e : my_threads)
-// 		e.join();
+	// t1 ~ t4가 끝날 때까지 wait
+	t1.join();
+	t2.join();
+	t3.join();
+	t4.join();
+	for (auto &e : my_threads)
+		e.join();
 
-// 	return (0);
-// }
+	return (0);
+}
 
 std::mutex	mutex;	// mutual exclusion
 

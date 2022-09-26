@@ -127,6 +127,7 @@ int	main()
 		}
 
 		// async와 future이 연결되지 않은 경우
+		// JS도 async의 리턴값 : promise
 		// => sequential인 것처럼 진행됨
 		{
 			std::async([] {

@@ -20,9 +20,9 @@ void	func(MyStruct&& s)
 // 템플릿을 통해 접근하게 만듦
 // wrapper 함수를 만들어서 func()를 호출
 template<typename T>
-void	func_wrapper(T t)
+void	func_wrapper(T t) // c++ 함수
 {
-	func(t);
+	func(t); // c함수를 사용할 떄
 }
 
 template<typename T>
