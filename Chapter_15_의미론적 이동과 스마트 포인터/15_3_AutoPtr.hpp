@@ -25,36 +25,36 @@ public:
 	}
 
 	// value semantics(copy semantics)
-	// // copy constructor
-	// AutoPtr(const AutoPtr &a)
-	// {
-	// 	std::cout << "class AutoPtr copy constructor" << std::endl;
-	// 	// m_ptr = a.m_ptr;
-	// 	// a.m_ptr = nullptr;
-	// 	// deep copy
-	// 	m_ptr = new T;
-	// 	// Resource class의 assignment operator overloading
-	// 	*m_ptr = *a.m_ptr;
-	// }
+	// copy constructor
+	AutoPtr(const AutoPtr &a)
+	{
+		std::cout << "class AutoPtr copy constructor" << std::endl;
+		// m_ptr = a.m_ptr;
+		// a.m_ptr = nullptr;
+		// deep copy
+		m_ptr = new T;
+		// Resource class의 assignment operator overloading
+		*m_ptr = *a.m_ptr;
+	}
 
-	// // assignment operator
-	// // if no const argument : error: no viable overloaded '='
-	// // note: candidate function not viable: expects an lvalue for 1st argument
-	// AutoPtr& operator=(const AutoPtr &a)
-	// {
-	// 	std::cout << "class AutoPtr copy assignment" << std::endl;
-	// 	if (&a == this)
-	// 		// 그냥 this를 반환한다면 => 포인터이기 때문
-	// 		// error: non-const lvalue reference to type 'AutoPtr<Resource>' 
-	// 		// cannot bind to a temporary of type 'AutoPtr<Resource> *'
-	// 		return (*this);
-	// 	if (m_ptr != nullptr) delete m_ptr;
-	// 	// deep copy
-	// 	m_ptr = new T;
-	// 	// Resource class의 assignment operator overloading
-	// 	*m_ptr = *a.m_ptr;
-	// 	return (*this);
-	// }
+	// assignment operator
+	// if no const argument : error: no viable overloaded '='
+	// note: candidate function not viable: expects an lvalue for 1st argument
+	AutoPtr& operator=(const AutoPtr &a)
+	{
+		std::cout << "class AutoPtr copy assignment" << std::endl;
+		if (&a == this)
+			// 그냥 this를 반환한다면 => 포인터이기 때문
+			// error: non-const lvalue reference to type 'AutoPtr<Resource>' 
+			// cannot bind to a temporary of type 'AutoPtr<Resource> *'
+			return (*this);
+		if (m_ptr != nullptr) delete m_ptr;
+		// deep copy
+		m_ptr = new T;
+		// Resource class의 assignment operator overloading
+		*m_ptr = *a.m_ptr;
+		return (*this);
+	}
 
 	// move semantics(move)
 	// move constructor
